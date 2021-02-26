@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EmpMapper">
+
+
+    <insert id="save" parameterType="com.domain.Emp">
+        insert into emp  values (#{id},#{name},#{birthday});
+    </insert>
+
+    <select id="findById" parameterType="int" resultType="com.domain.Emp">
+        select * from emp where id=#{id};
+    </select>
+    <resultMap id="empMap" type="com.domain.Emp">
+        <id column="eid" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="birthday" property="birthday"></result>
+        <!--   配置集合信息
+                property:集合名称
+                ofType：当前集合中的数据类型
+             -->
+        <collection property="orderList" ofType="com.domain.Order">
+            <!--     封装Order的数据       -->
+            <id column="oid" property="id"></id>
+            <result column="ordertime" property="ordertime"></result>
+            <result column="total" property="total"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="empMap">
+        select *,o.id oid from emp e,orders o where e.id=o.id;
+    </select>
+
+    <resultMap id="empRoleMap" type="com.domain.Emp">
+        <id column="emp_id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="birthday" property="birthday"></result>
+        <!--   配置emp内部的roleList信息     -->
+        <collection property="roleList" ofType="com.domain.Role">
+            <id column="role_id" property="id"></id>
+            <result column="roleName" property="roleName"></result>
+            <result column="roleDesc" property="roleDesc"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findEmpAndRoleAll" resultMap="empRoleMap">
+        SELECT * FROM emp e,emp_role er,role r WHERE e.id=er.emp_id AND er.role_id=r.id
+    </select>
+
+
+</mapper>

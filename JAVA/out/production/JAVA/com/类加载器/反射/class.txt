@@ -1,0 +1,2 @@
+className=com.类加载器.反射.Teacher
+methodName=teach

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="userDao" class="com.xupt.dao.impl.UserDaoImpl" init-method="init" destroy-method="destroy"></bean>-->
+    <bean id="userDao" class="com.xupt.dao.impl.UserDaoImpl" >
+        <property name="age" value="19"></property>
+        <property name="arr">
+            <list>
+                <value>aaa</value>
+                <value>abb</value>
+                <value>abc</value>
+            </list>
+        </property>
+    </bean>
+<!--    <bean id="userDao" class="com.xupt.factory.StaticFactory" factory-method="getUserDao"></bean>-->
+<!--    <bean id="factory" class="com.xupt.factory.DynamicFactory" ></bean>-->
+<!--    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"></bean>-->
+<!--    <bean id="userService" class="com.xupt.service.servImpl.UserServiceImpl" >-->
+<!--        <property name="userDao" ref="userDao"></property>-->
+<!--    </bean>-->
+<!--    <bean id="userService" class="com.xupt.service.servImpl.UserServiceImpl" p:userDao-ref="userDao"></bean>-->
+        <bean id="userService" class="com.xupt.service.servImpl.UserServiceImpl">
+            <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+        </bean>
+
+</beans>

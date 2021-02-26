@@ -1,0 +1,32 @@
+jdbc:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/springboot_test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  username: root
+  password: cyb321
+
+#You need to specify a different profile name to activate another profile
+spring:
+  profiles:
+    active: abc,def
+  #datasource
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: cyb321
+
+#tomcat port
+server.port: 8080
+
+logging:
+  level:
+    com.xupt: debug
+    org.springframework: info
+
+mybatis:
+  # shi ti bie ming
+  type-aliases-package: com.xupt.pojo
+  #ying she wen jian lu jing
+  #mapper-locations: classpath:mappers/*.yml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

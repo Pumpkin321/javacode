@@ -1,0 +1,45 @@
+IO流小结：
+字节流分为字节输入流 字节输出流
+字节输入流
+int read() 一次读取一个字节
+int read(byte[] bys) 一次读取一个字节数组
+
+字节输入流
+void write(int by) 一次写一个字节
+void write(byte[] bys,int index,int len)一次写一个字节数组的一部分
+
+字节输入流又可以分为FileInputStream BufferedInputStream
+
+字节输出流又可以分为FileOutputStream BufferedOutputStream
+
+字节流可以复制任意文件数据，有四种方式 一般采用字节缓冲流一次写一个字节数组的方式
+
+
+
+字符流
+
+字符输入流 Reader 字符输出流 Writer
+
+字符输入流
+int read() 一次读取一个字符
+int read(char[] chs) 一次读取一个字符数组
+
+字符输出流
+void write(int ch) 一次写一个字符
+void write(char[] chs,int index,int len)一次写一个字符数组的一部分
+
+字符输入流又可以分为InputStreamReader BufferedReader
+String readLine() 一次读取一个字符串
+InputStreamReader 可以使用子类 FileReader
+
+字符输出流又可以分为OutputStreamWriter BufferedWriter
+void newLine();一次写一个换行符
+void write(String line);一次写一个字符串
+
+OutputStreamWriter 可以使用子类FileWriter
+
+字符流只能复制文本数据 有五种方式 一般才有字符缓冲流的特有功能
+
+
+
+
